@@ -1,0 +1,160 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+
+const values = [
+  {
+    title: "Sustainable > Extreme",
+    description:
+      "Quick fixes and crash diets don't lead to lasting change. Everything Novella builds with clients is designed to become a natural part of life — not something to white-knuckle through.",
+  },
+  {
+    title: "Strength Over Shrinking",
+    description:
+      "The goal isn't to take up less space. It's to feel powerful, capable, and energized in your body. We train to get stronger — and the aesthetics follow as a byproduct.",
+  },
+  {
+    title: "Nourish, Not Restrict",
+    description:
+      "Food is fuel, joy, and culture. Novella's approach prioritizes what you add to your plate — not what you take away. No food shaming, no forbidden lists.",
+  },
+];
+
+const credentials = [
+  "NASM Certified Personal Trainer (CPT)",
+  "Precision Nutrition Level 1 Coach (PN1)",
+  "Pre/Post-Natal Fitness Specialist",
+  "8+ Years Coaching Experience",
+];
+---
+
+<BaseLayout
+  title="About"
+  description="Learn about Novella — certified personal trainer and nutrition coach dedicated to women's fitness and sustainable transformation."
+>
+  <!-- Page Hero -->
+  <section class="bg-cream py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-blush-dark text-sm font-semibold uppercase tracking-widest mb-3">Meet Your Coach</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-brown-dark">About Novella</h1>
+    </div>
+  </section>
+
+  <!-- Bio Section -->
+  <section class="bg-cream pb-24">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <!-- Placeholder image -->
+      <div class="flex justify-center md:justify-start">
+        <div
+          class="w-full max-w-xs aspect-square rounded-3xl shadow-xl"
+          style="background: linear-gradient(135deg, #D4A5A0 0%, #B07870 35%, #7C5C52 70%, #5A3E36 100%);"
+          aria-hidden="true"
+        >
+          <div class="w-full h-full flex items-center justify-center">
+            <svg
+              viewBox="0 0 120 140"
+              width="110"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <ellipse cx="60" cy="30" rx="22" ry="25" fill="#F5EFE6" opacity="0.3"></ellipse>
+              <path
+                d="M38 55 Q20 80 25 120 Q38 140 60 145 Q82 140 95 120 Q100 80 82 55 Q72 46 60 47 Q48 46 38 55Z"
+                fill="#F5EFE6"
+                opacity="0.2"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio text -->
+      <div>
+        <h2 class="text-3xl font-bold text-brown-dark mb-6">Hi, I'm Novella</h2>
+        <div class="space-y-4 text-brown-dark/80 leading-relaxed">
+          <p>
+            I know what it's like to feel stuck in your body — to do everything "right" and still not see the
+            results you're working so hard for. After years of following programs designed for someone else's
+            goals, I finally understood what it meant to train and eat in a way that honored my own body.
+          </p>
+          <p>
+            As a certified personal trainer and nutrition coach, I've spent the last eight years helping women
+            rewrite their relationship with food and fitness. My approach blends strength training, hormonal
+            health, and sustainable nutrition to create transformations that last — not just for twelve weeks,
+            but for life.
+          </p>
+          <p>
+            I specialize in working with women navigating hormonal shifts, body recomposition goals, and the
+            mental game of lasting change. I believe every woman deserves to feel powerful, confident, and at
+            home in her body — and I'm here to help you get there.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-24" style="background-color: color-mix(in srgb, #D4A5A0 10%, #F5EFE6);">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-blush-dark text-sm font-semibold uppercase tracking-widest mb-3">My Philosophy</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brown-dark">What I Believe</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {
+          values.map((value) => (
+            <div class="bg-white rounded-2xl shadow-md p-8 hover:-translate-y-1 transition-transform duration-300">
+              <h3 class="text-xl font-bold text-brown mb-4">{value.title}</h3>
+              <p class="text-brown-dark/70 text-sm leading-relaxed">{value.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="bg-cream py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-blush-dark text-sm font-semibold uppercase tracking-widest mb-3">Qualifications</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brown-dark">Credentials</h2>
+      </div>
+      <ul class="flex flex-col gap-4">
+        {
+          credentials.map((cred) => (
+            <li class="flex items-center gap-4 bg-white rounded-xl shadow-sm px-6 py-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#D4A5A0"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              <span class="text-brown-dark font-medium">{cred}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brown-dark py-24">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-cream mb-4">Ready to Work Together?</h2>
+      <p class="text-cream/70 mb-10 text-lg">
+        Let's hop on a free call and talk about where you are, where you want to go, and how I can help you
+        get there.
+      </p>
+      <Button href="/contact">Book a Free Discovery Call</Button>
+    </div>
+  </section>
+</BaseLayout>

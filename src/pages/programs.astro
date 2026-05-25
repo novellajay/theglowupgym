@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import ProgramCard from "../components/ProgramCard.astro";
+
+const programs = [
+  {
+    name: "Self-Guided Program",
+    price: "$47",
+    priceNote: "one-time",
+    features: [
+      "8-week workout plan",
+      "Comprehensive meal guide",
+      "Video exercise library",
+      "Progress tracking templates",
+      "Email support",
+    ],
+    popular: false,
+  },
+  {
+    name: "12-Week Transformation",
+    price: "$797",
+    priceNote: "one-time",
+    features: [
+      "Structured 12-week program",
+      "Custom nutrition plan",
+      "3 one-on-one check-in calls",
+      "Private community access",
+      "Video exercise library",
+      "Weekly email check-ins",
+    ],
+    popular: true,
+  },
+  {
+    name: "Signature 1:1 Coaching",
+    price: "$297",
+    priceNote: "/month",
+    features: [
+      "Fully custom workout plan",
+      "Personalized nutrition strategy",
+      "Weekly 1:1 video check-ins",
+      "Coaching app access",
+      "Unlimited messaging support",
+      "Monthly plan adjustments",
+    ],
+    popular: false,
+  },
+];
+
+const faqs = [
+  {
+    question: "How do I get started?",
+    answer:
+      "Book a free 30-minute discovery call through the contact page. We'll talk through your goals, answer any questions, and figure out which program is the right fit for you. No pressure, no commitment required.",
+  },
+  {
+    question: "Do I need a gym membership?",
+    answer:
+      "No — all programs include both gym and home-workout options. You can achieve excellent results with minimal equipment. Novella will build your plan around whatever setup you have access to.",
+  },
+  {
+    question: "What if I'm a complete beginner?",
+    answer:
+      "Perfect! Many of Novella's clients start with zero gym experience. Programs are fully scaled to your current fitness level, and every exercise is explained with video demonstrations so you'll always know exactly what to do.",
+  },
+  {
+    question: "How quickly will I see results?",
+    answer:
+      "Most clients notice meaningful changes in energy, strength, and how their clothes fit within the first 3–4 weeks. Visible body composition changes typically become clear by weeks 6–8. Sustainable results take time — and that's exactly the point.",
+  },
+];
+---
+
+<BaseLayout
+  title="Programs"
+  description="Work with Novella — choose from 1:1 coaching, 12-week transformation, or self-guided programs designed for women."
+>
+  <!-- Page Hero -->
+  <section class="bg-cream py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-blush-dark text-sm font-semibold uppercase tracking-widest mb-3">Pricing & Programs</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-brown-dark mb-4">Work With Novella</h1>
+      <p class="text-brown-dark/70 text-lg max-w-2xl mx-auto">
+        Choose the level of support that's right for you. Every program is rooted in the same science-backed
+        principles — designed to build a body and life you love.
+      </p>
+    </div>
+  </section>
+
+  <!-- Program Cards -->
+  <section class="bg-cream pb-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        {
+          programs.map((program) => (
+            <ProgramCard
+              name={program.name}
+              price={program.price}
+              priceNote={program.priceNote}
+              features={program.features}
+              popular={program.popular}
+              ctaHref="/contact"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24" style="background-color: color-mix(in srgb, #D4A5A0 10%, #F5EFE6);">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-blush-dark text-sm font-semibold uppercase tracking-widest mb-3">FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brown-dark">Common Questions</h2>
+      </div>
+      <div class="flex flex-col gap-6">
+        {
+          faqs.map((faq) => (
+            <div class="bg-white rounded-2xl shadow-md p-7">
+              <h3 class="text-lg font-bold text-brown-dark mb-3">{faq.question}</h3>
+              <p class="text-brown-dark/70 text-sm leading-relaxed">{faq.answer}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="bg-brown-dark py-24">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-cream mb-4">Not Sure Which Program Is Right?</h2>
+      <p class="text-cream/70 mb-10 text-lg">
+        Book a free discovery call and Novella will help you figure out exactly where to start.
+      </p>
+      <Button href="/contact">Book a Free Discovery Call</Button>
+    </div>
+  </section>
+</BaseLayout>

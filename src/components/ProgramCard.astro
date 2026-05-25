@@ -1,0 +1,50 @@
+---
+interface Props {
+  name: string;
+  price: string;
+  priceNote: string;
+  features: string[];
+  popular?: boolean;
+  ctaHref?: string;
+}
+
+const { name, price, priceNote, features, popular = false, ctaHref = "#contact" } = Astro.props;
+---
+
+<div class={`relative bg-white rounded-2xl shadow-md p-8 hover:-translate-y-1 transition-transform duration-300 flex flex-col ${popular ? "ring-2 ring-blush" : ""}`}>
+  {popular && (
+    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blush text-white text-xs font-semibold px-4 py-1 rounded-full whitespace-nowrap">
+      Most Popular
+    </span>
+  )}
+
+  <div class="mb-6">
+    <h3 class="text-xl font-bold text-brown-dark mb-3">{name}</h3>
+    <div class="flex items-baseline gap-1">
+      <span class="text-4xl font-bold text-brown">{price}</span>
+      <span class="text-brown-light text-sm">{priceNote}</span>
+    </div>
+  </div>
+
+  <ul class="flex flex-col gap-3 mb-8 flex-1">
+    {features.map((feature) => (
+      <li class="flex items-start gap-3 text-sm text-brown-dark/80">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A5A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        {feature}
+      </li>
+    ))}
+  </ul>
+
+  <a
+    href={ctaHref}
+    class={`mt-auto inline-flex items-center justify-center px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
+      popular
+        ? "bg-brown text-cream hover:bg-brown-dark"
+        : "border-2 border-blush text-brown hover:bg-blush hover:text-white"
+    }`}
+  >
+    Book a Free Discovery Call
+  </a>
+</div>
