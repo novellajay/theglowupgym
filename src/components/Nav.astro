@@ -1,0 +1,103 @@
+---
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/programs", label: "Programs" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-cream">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="text-2xl font-bold text-brown-dark" style="font-family: 'Playfair Display', serif;">
+      Novella
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class={`text-sm font-medium transition-colors hover:text-brown ${
+              currentPath === link.href ? "text-brown font-semibold" : "text-brown-dark"
+            }`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Desktop CTA -->
+    <a
+      href="#contact"
+      class="hidden md:inline-flex items-center px-5 py-2.5 bg-brown text-cream rounded-full text-sm font-medium hover:bg-brown-dark transition-colors"
+    >
+      Book a Call
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span class="hamburger-line block w-6 h-0.5 bg-brown-dark transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-brown-dark transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-brown-dark transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden bg-cream border-t border-blush/30 px-6 py-4"
+  >
+    <ul class="flex flex-col gap-4 mb-4">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class={`block text-sm font-medium transition-colors hover:text-brown ${
+              currentPath === link.href ? "text-brown font-semibold" : "text-brown-dark"
+            }`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a
+      href="#contact"
+      class="inline-flex items-center px-5 py-2.5 bg-brown text-cream rounded-full text-sm font-medium hover:bg-brown-dark transition-colors"
+    >
+      Book a Call
+    </a>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const nav = document.getElementById("main-nav");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // Add shadow on scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      nav?.classList.add("shadow-md");
+    } else {
+      nav?.classList.remove("shadow-md");
+    }
+  });
+</script>
